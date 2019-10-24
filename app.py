@@ -5,6 +5,12 @@ import os
 root = tk.Tk()
 apps = []
 
+if os.path.isfile('save.txt'):
+    with open('save.txt','r') as f:
+        tempApps = f.read()
+        tempApps = tempApps.split(",")
+        apps = [x for x in tempApps if x.strip()]
+
 def addApp():
 for widget in frame.winfo_chidlren():
     widget.destroy()
@@ -34,4 +40,12 @@ button.pack()
 runApp = tk.Button(root,text="Run App",padx=12,pady=5, fg="white", bg="#243d45",command = runApps)
 runApp.pack()
 
+for app in apps:
+    label = tk.Label(frame,text=app)
+    label.pack()
+
 root.mainloop()
+
+with open("save.txt",'w') as f:
+    for app in apps:
+        f.write(app + ',')
