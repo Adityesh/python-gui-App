@@ -12,16 +12,16 @@ if os.path.isfile('save.txt'):
         apps = [x for x in tempApps if x.strip()]
 
 def addApp():
-for widget in frame.winfo_chidlren():
-    widget.destroy()
+    for widget in frame.winfo_chidlren():
+        widget.destroy()
 
-    filename = filedialog.askopenfilename(initialdir="/",title="Select File",filetypes=(("executables","*.exe"),("all files","*.*")))
+        filename = filedialog.askopenfilename(initialdir="/",title="Select File",filetypes=(("executables","*.exe"),("all files","*.*")))
 
-    apps.append(filename)
+        apps.append(filename)
 
-    for app in apps:
-        label = tk.Label(frame,text=app,bg+"gray")
-        label.pack()
+        for app in apps:
+            label = tk.Label(frame,text="app",bg="gray")
+            label.pack()
 
 def runApps():
     for app in apps:
